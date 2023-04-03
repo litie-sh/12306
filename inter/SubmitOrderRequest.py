@@ -3,11 +3,11 @@ import datetime
 import urllib
 from collections import OrderedDict
 import TickerConfig
+from common import err
 from config.urlConf import urls
 from inter.CheckOrderInfo import checkOrderInfo
 from inter.ConfirmHB import confirmHB
 from inter.PassengerInitApi import passengerInitApi
-from myException.ticketIsExitsException import ticketIsExitsException
 
 
 def time():
@@ -73,7 +73,7 @@ class submitOrderRequest:
             else:
                 print (u'出票失败')
         elif 'messages' in submitResult and submitResult['messages']:
-            raise ticketIsExitsException(submitResult['messages'][0])
+            raise err.ticketIsExitsException(submitResult['messages'][0])
 
 
 class submitOrderRequestByAfterNate:

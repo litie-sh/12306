@@ -10,13 +10,14 @@ def parser_arguments(argv):
     :return:
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("operate", type=str, help="r: 运行抢票程序, c: 过滤cdn, t: 测试邮箱和server酱，server酱需要打开开关")
+    parser.add_argument("--operate", type=str, help="r: 运行抢票程序, c: 过滤cdn, t: 测试邮箱和server酱，server酱需要打开开关")
 
     return parser.parse_args(argv)
 
 
 if __name__ == '__main__':
     args = parser_arguments(sys.argv[1:])
+    print(args.operate)
     if args.operate == "r":
         from init import select_ticket_info
         select_ticket_info.select().main()

@@ -5,8 +5,6 @@ import time
 from config.TicketEnmu import ticket
 from config.emailConf import sendEmail
 from config.serverchanConf import sendServerChan
-from myException.ticketIsExitsException import ticketIsExitsException
-from myException.ticketNumOutException import ticketNumOutException
 
 
 class queryOrderWaitTime:
@@ -45,7 +43,7 @@ class queryOrderWaitTime:
                             data.get("orderId", "")))
                         sendServerChan(ticket.WAIT_ORDER_SUCCESS.format(
                             data.get("orderId", "")))
-                        raise ticketIsExitsException(ticket.WAIT_ORDER_SUCCESS.format(
+                        raise err.ticketIsExitsException(ticket.WAIT_ORDER_SUCCESS.format(
                             data.get("orderId")))
                     elif data.get("msg", False):
                         print(data.get("msg", ""))
@@ -62,7 +60,7 @@ class queryOrderWaitTime:
                 pass
             time.sleep(2)
         else:
-            print(ticketNumOutException(ticket.WAIT_ORDER_SUB_FAIL))
+            print(err.ticketNumOutException(ticket.WAIT_ORDER_SUB_FAIL))
 
     def queryMyOrderNoComplete(self):
         """
@@ -82,7 +80,7 @@ class queryOrderWaitTime:
             elif queryMyOrderNoCompleteResult.get("data", False) and queryMyOrderNoCompleteResult["data"].get("orderCacheDTO", False):
                 if queryMyOrderNoCompleteResult["data"]["orderCacheDTO"].get("message", False):
                     print(queryMyOrderNoCompleteResult["data"]["orderCacheDTO"]["message"]["message"])
-                    raise ticketNumOutException(
+                    raise err.ticketNumOutException(
                         queryMyOrderNoCompleteResult["data"]["orderCacheDTO"]["message"]["message"])
             else:
                 if queryMyOrderNoCompleteResult.get("message", False):

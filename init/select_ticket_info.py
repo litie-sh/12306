@@ -9,6 +9,7 @@ import time
 import TickerConfig
 import wrapcache
 from agency.cdn_utils import CDNProxy, open_cdn_file
+from common import err
 from config import urlConf, configCommon
 from config.TicketEnmu import ticket
 from config.configCommon import seat_conf_2, seat_conf
@@ -21,11 +22,6 @@ from inter.GetPassengerDTOs import getPassengerDTOs
 from inter.LiftTicketInit import liftTicketInit
 from inter.Query import query
 from inter.SubmitOrderRequest import submitOrderRequest
-from myException.PassengerUserException import PassengerUserException
-from myException.UserPasswordException import UserPasswordException
-from myException.ticketConfigException import ticketConfigException
-from myException.ticketIsExitsException import ticketIsExitsException
-from myException.ticketNumOutException import ticketNumOutException
 from myUrllib.httpUtils import HTTPClient
 
 
@@ -219,19 +215,19 @@ class select:
                     nateMsg = ' 无候补机会' if TickerConfig.ORDER_TYPE == 2 else ""
                     print(f"正在第{num}次查询 停留时间：{random_time} 乘车日期: {','.join(TickerConfig.STATION_DATES)} 车次：{','.join(TickerConfig.STATION_TRAINS) or '所有车次'} 下单无票{nateMsg} 耗时：{(datetime.datetime.now() - now).microseconds / 1000} {queryResult.get('cdn')}")
                     time.sleep(random_time)
-            except PassengerUserException as e:
+            except err.PassengerUserException as e:
                 print(e)
                 break
-            except ticketConfigException as e:
+            except err.ticketConfigException as e:
                 print(e)
                 break
-            except ticketIsExitsException as e:
+            except err.ticketIsExitsException as e:
                 print(e)
                 break
-            except ticketNumOutException as e:
+            except err.ticketNumOutException as e:
                 print(e)
                 break
-            except UserPasswordException as e:
+            except err.UserPasswordException as e:
                 print(e)
                 break
             except ValueError as e:

@@ -81,17 +81,17 @@ HTTP_TYPE = "http"
 #  host: "smtp.qq.com"
 EMAIL_CONF = {
     "IS_MAIL": True,
-    "email": "",
-    "notice_email_list": "",
-    "username": "",
+    "email": "tie.li04@outlook.com",
+    "notice_email_list": "tie.li04@outlook.com",
+    "username": "tie.li04@outlook.com",
     "password": "",
     "host": "smtp.qq.com",
 }
 
 # 是否开启 server酱 微信提醒， 使用前需要前往 http://sc.ftqq.com/3.version 扫码绑定获取 SECRET 并关注获得抢票结果通知的公众号
 SERVER_CHAN_CONF = {
-    "is_server_chan": False,
-    "secret": ""
+    "is_server_chan": True,
+    "secret": "SCT204008Th9grNE2kSPTBgfRbz8nFl2Vm"
 }
 
 # 是否开启cdn查询，可以更快的检测票票 1为开启，2为关闭

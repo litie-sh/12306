@@ -3,7 +3,7 @@ import TickerConfig
 from config.urlConf import urls
 from myUrllib.httpUtils import HTTPClient
 
-PUSH_SERVER_CHAN_PATH = "https://sc.ftqq.com"
+PUSH_SERVER_CHAN_PATH = "https://sct.ftqq.com"
 
 
 def sendServerChan(msg):

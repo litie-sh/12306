@@ -4,11 +4,11 @@ import time
 from collections import OrderedDict
 from time import sleep
 import TickerConfig
+from common import err
 from inter.GetPassCodeNewOrderAndLogin import getPassCodeNewOrderAndLogin1
 from inter.GetRandCode import getRandCode
 from inter.LoginAysnSuggest import loginAysnSuggest
 from inter.LoginConf import loginConf
-from myException.UserPasswordException import UserPasswordException
 
 
 class GoLogin:
@@ -74,7 +74,7 @@ class GoLogin:
         elif 'result_message' in tresult and tresult['result_message']:
             messages = tresult['result_message']
             if messages.find(u"密码输入错误") is not -1:
-                raise UserPasswordException("{0}".format(messages))
+                raise err.UserPasswordException("{0}".format(messages))
             else:
                 print(u"登录失败: {0}".format(messages))
                 print(u"尝试重新登陆")
@@ -113,7 +113,7 @@ class GoLogin:
         """
         user, passwd = TickerConfig.USER, TickerConfig.PWD
         if not user or not passwd:
-            raise UserPasswordException(u"温馨提示: 用户名或者密码为空，请仔细检查")
+            raise err.UserPasswordException(u"温馨提示: 用户名或者密码为空，请仔细检查")
         login_num = 0
         while True:
             if loginConf(self.session):

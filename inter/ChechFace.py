@@ -1,10 +1,11 @@
 import datetime
 import urllib
 from collections import OrderedDict
+
+from common import err
 from config.urlConf import urls
 import TickerConfig
 from inter.GetSuccessRate import getSuccessRate
-from myException.ticketConfigException import ticketConfigException
 import wrapcache
 
 
@@ -44,7 +45,7 @@ class chechFace:
                 """
                 未通过人脸核验
                 """
-                raise ticketConfigException("通过人证一致性核验的用户及激活的“铁路畅行”会员可以提交候补需求，请您按照操作说明在铁路12306app.上完成人证核验")
+                raise err.ticketConfigException("通过人证一致性核验的用户及激活的“铁路畅行”会员可以提交候补需求，请您按照操作说明在铁路12306app.上完成人证核验")
             elif data.get("face_check_code") in ["12", "02"]:
                 """
                 系统忙，请稍后再试！
@@ -56,7 +57,7 @@ class chechFace:
                 """
                 证件信息审核失败，请检查所填写的身份信息内容与原证件是否一致。
                 """
-                raise ticketConfigException("证件信息审核失败，请检查所填写的身份信息内容与原证件是否一致。")
+                raise err.ticketConfigException("证件信息审核失败，请检查所填写的身份信息内容与原证件是否一致。")
             elif data.get("face_check_code") in ["01", "11"]:
                 """
                 证件信息正在审核中，请您耐心等待，审核通过后可继续完成候补操作。

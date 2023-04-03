@@ -11,7 +11,6 @@ from config.emailConf import sendEmail
 from config.serverchanConf import sendServerChan
 from config.urlConf import urls
 from inter.ConfirmSingleForQueue import confirmSingleForQueue
-from myException.ticketIsExitsException import ticketIsExitsException
 
 
 def conversion_int(str):
@@ -134,7 +133,7 @@ class queryQueueByAfterNate:
             else:
                 sendEmail(ticket.WAIT_ORDER_SUCCESS)
                 sendServerChan(ticket.WAIT_ORDER_SUCCESS)
-                raise ticketIsExitsException(ticket.WAIT_AFTER_NATE_SUCCESS)
+                raise err.ticketIsExitsException(ticket.WAIT_AFTER_NATE_SUCCESS)
 
 
 if __name__ == '__main__':

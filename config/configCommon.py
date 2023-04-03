@@ -5,7 +5,7 @@ import random
 import sys
 import time
 
-from myException.ticketConfigException import ticketConfigException
+from common import err
 
 rushRefreshMinTimeIntval = 2000
 rushRefreshMaxTimeIntval = 3600000
@@ -129,7 +129,7 @@ def checkDate(station_dates):
             station_dates.remove(station_date)
             if not station_dates:
                 print(u"当前日期设置无符合查询条件的，已被全部删除，请查证后添加!!!")
-                raise ticketConfigException(u"当前日期设置无符合查询条件的，已被全部删除，请查证后添加!!!")
+                raise err.ticketConfigException(u"当前日期设置无符合查询条件的，已被全部删除，请查证后添加!!!")
         else:
             station_dates[station_dates.index(station_date)] = date
     return station_dates

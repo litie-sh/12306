@@ -1,8 +1,8 @@
 # coding=utf-8
 import json
 
+from common import err
 from config.TicketEnmu import ticket
-from myException.PassengerUserException import PassengerUserException
 import wrapcache
 import TickerConfig
 
@@ -81,7 +81,7 @@ class getPassengerDTOs:
             user_info = self.sendGetPassengerDTOs()
             wrapcache.set("user_info", user_info, timeout=9999999)
         if not user_info:
-            raise PassengerUserException(ticket.DTO_NOT_IN_LIST)
+            raise err.PassengerUserException(ticket.DTO_NOT_IN_LIST)
         if len(user_info) < self.is_more_ticket_num:  # 如果乘车人填错了导致没有这个乘车人的话，可能乘车人数会小于自动乘车人
             self.is_more_ticket_num = len(user_info)
         if secretStr:
