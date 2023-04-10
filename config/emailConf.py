@@ -28,13 +28,10 @@ def sendEmail(msg):
             msg['From'] = sender
             msg['To'] = receiver
 
-            try:
-                smtp = smtplib.SMTP_SSL(host)
-                smtp.connect(host)
-            except socket.error:
-                smtp = smtplib.SMTP()
-                smtp.connect(host)
-            smtp.connect(host)
+            smtp = smtplib.SMTP_SSL(host=host)
+            smtp.connect(host=host)
+            # smtp.ehlo()  # 向邮箱发送SMTP 'ehlo' 命令
+            # smtp.starttls()
             smtp.login(username, password)
             smtp.sendmail(sender, receiver.split(","), msg.as_string())
             smtp.quit()

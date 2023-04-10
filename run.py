@@ -17,14 +17,13 @@ def parser_arguments(argv):
 
 if __name__ == '__main__':
     args = parser_arguments(sys.argv[1:])
-    print(args.operate)
     if args.operate == "r":
         from init import select_ticket_info
         select_ticket_info.select().main()
     elif args.operate == "t":
         from config.emailConf import sendEmail
         from config.serverchanConf import sendServerChan
-        sendEmail(u"订票小助手测试一下")
+        # sendEmail(u"订票小助手测试一下")
         sendServerChan("订票小助手测试一下")
     elif args.operate == "c":
         from agency.cdn_utils import filterCdn

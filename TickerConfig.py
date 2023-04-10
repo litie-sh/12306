@@ -9,7 +9,7 @@ TICKET_TYPE = 1
 
 # 出发日期(list) "2018-01-06", "2018-01-07"
 STATION_DATES = [
-    "2020-01-18"
+    "2023-04-18"
 ]
 
 # 填入需要购买的车次(list)，"G1353"
@@ -18,10 +18,10 @@ STATION_DATES = [
 STATION_TRAINS = []
 
 # 出发城市，比如深圳北，就填深圳就搜得到
-FROM_STATION = "广州南"
+FROM_STATION = "秦皇岛"
 
 # 到达城市 比如深圳北，就填深圳就搜得到
-TO_STATION = "隆回"
+TO_STATION = "延吉西"
 
 # 座位(list) 多个座位ex:
 # "商务座",
@@ -42,10 +42,10 @@ IS_MORE_TICKET = True
 # 乘车人(list) 多个乘车人ex:
 # "张三",
 # "李四"
-TICKET_PEOPLES = []
+TICKET_PEOPLES = ["李铁"]
 
 # 12306登录账号
-USER = ""
+USER = "qingxiejiaoa"
 PWD = ""
 
 # 加入小黑屋时间默认为5分钟，此功能为了防止僵尸票导致一直下单不成功错过正常的票
@@ -59,9 +59,10 @@ IS_AUTO_CODE = True
 AUTO_CODE_TYPE = 3
 
 # 此处设置云打码服务器地址，如果有自建的服务器，可以自行更改
-HOST = "120.77.154.140:8000"
+HOST = "180.100.202.81:8080"
 REQ_URL = "/verify/base64/"
 HTTP_TYPE = "http"
+# 180.100.202.81:8080
 # HOST="12306.yinaoxiong.cn" #备用服务器稳定性较差
 # REQ_URL="/verify/base64/"
 # HTTP_TYPE="https"
@@ -82,16 +83,16 @@ HTTP_TYPE = "http"
 EMAIL_CONF = {
     "IS_MAIL": True,
     "email": "tie.li04@outlook.com",
-    "notice_email_list": "tie.li04@outlook.com",
+    "notice_email_list": "1004774010@qq.com",
     "username": "tie.li04@outlook.com",
-    "password": "",
-    "host": "smtp.qq.com",
+    "password": "mo44199582844ri",
+    "host": "smtp.office365.com",
 }
 
 # 是否开启 server酱 微信提醒， 使用前需要前往 http://sc.ftqq.com/3.version 扫码绑定获取 SECRET 并关注获得抢票结果通知的公众号
 SERVER_CHAN_CONF = {
     "is_server_chan": True,
-    "secret": "SCT204008Th9grNE2kSPTBgfRbz8nFl2Vm"
+    "secret": "PDU1TIq8vmMXt9s0W2D7U93vbsRJBefa55i4S"
 }
 
 # 是否开启cdn查询，可以更快的检测票票 1为开启，2为关闭
@@ -102,7 +103,7 @@ ORDER_TYPE = 2
 
 # 下单模式 1 为预售，整点刷新，刷新间隔0.1-0.5S, 然后会校验时间，比如12点的预售，那脚本就会在12.00整检票，刷新订单
 #         2 是捡漏，捡漏的刷新间隔时间为0.5-3秒，时间间隔长，不容易封ip
-ORDER_MODEL = 1
+ORDER_MODEL = 2
 
 # 是否开启代理, 0代表关闭， 1表示开始
 # 开启此功能的时候请确保代理ip是否可用，在测试放里面经过充分的测试，再开启此功能，不然可能会耽误你购票的宝贵时间
@@ -126,8 +127,8 @@ CHROME_PATH = "/usr/src/app/chromedriver"
 CHROME_CHROME_PATH = "/opt/google/chrome/google-chrome"
 
 # 如果COOKIE_TYPE=3, 则需配置RAIL_EXPIRATION、RAIL_DEVICEID的值
-RAIL_EXPIRATION = ""
-RAIL_DEVICEID = ""
+RAIL_EXPIRATION = "1681191745492"
+RAIL_DEVICEID = "WnPhsMGYcodGpppYdGOLctrU1USTdv1B8XacLoU6AuQIAezPo9GRfNn2JngRCwwGboEL7YSxCQP9u4s8DHfgM6JQH9ypwUHtZpQM4eoXVRqH8meK5Wig-kNq9ztUKTSu-ZuKAh8TxhVX7XJURD2MuFSNLV45W6Zi"
 # RAIL_EXPIRATION = "1577034103293"
 # RAIL_DEVICEID = "CDno29Erc_Pf3FSXb4dzq-Op64EhWrsi5yUZKVIKR1MAfYo2qFlCeXD8VkexY7_1qg-ClV-fE8j9jgVlPZxRh3wVc2iqLe_5A8sdr62qZx4B22JPF8lFCjpgTKZ5ODW90HJd5tiQsJ1KR9nOqHRxHj1FT5LEIwfw"
 

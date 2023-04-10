@@ -46,7 +46,7 @@ class HTTPClient(object):
         self._cdn = None
         self.cdnList = cdnList
         self._proxies = None
-        if is_proxy is 1:
+        if is_proxy == 1:
             self.proxy = proxy()
             self._proxies = self.proxy.setProxy()
             # print(u"设置当前代理ip为 {}, 请注意代理ip是否可用！！！！！请注意代理ip是否可用！！！！！请注意代理ip是否可用！！！！！".format(self._proxies))
@@ -139,7 +139,7 @@ class HTTPClient(object):
         else:
             method = "get"
             self.resetHeaders()
-        if TickerConfig.RANDOM_AGENT is 1:
+        if TickerConfig.RANDOM_AGENT == 1:
             self.setHeadersUserAgent()
         self.setHeadersReferer(urls["Referer"])
         if is_logger:
@@ -156,6 +156,8 @@ class HTTPClient(object):
                 url_host = urls["Host"]
         else:
             url_host = urls["Host"]
+        print(url_host)
+        print(req_url)
         http = urls.get("httpType") or "https"
         for i in range(re_try):
             try:
@@ -173,6 +175,7 @@ class HTTPClient(object):
                                            allow_redirects=allow_redirects,
                                            verify=False,
                                            **kwargs)
+                print(response)
                 if response.status_code == 200 or response.status_code == 302:
                     if urls.get("not_decode", False):
                         return response.content

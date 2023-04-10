@@ -19,9 +19,8 @@ def sendServerChan(msg):
         try:
             secret = TickerConfig.SERVER_CHAN_CONF["secret"].strip()
             sendServerChanUrls = urls.get("ServerChan")
-            sendServerChanUrls["req_url"] += f'{secret}.send'
 
-            params = {"text": "易行购票成功通知", "desp": msg}
+            params = {"text": "易行购票成功通知", "desp": msg, "pushkey":secret}
             httpClint = HTTPClient(0)
             sendServerChanRsp = httpClint.send(sendServerChanUrls, params=params)
             if sendServerChanRsp.get("errno") == 0:
